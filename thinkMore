@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>考虑函数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function arrReturn(n,max,min){
+				//新建容器
+				var arr=[];
+				var max=max||32;
+				var min=min||0;
+				if(typeof n === "number" && (n%1 === 0)){//判断如果n为整数字则执行代码
+					for(var i = 0 ;i <n ;i++){
+						var newNum=getRandomNum(max,min);
+						if(checkNum(newNum,arr)){
+							arr.push(newNum);
+						}else{
+							i--;
+						}
+					}
+					return arr;
+				}
+			}
+			console.log(arrReturn(11));
+			
+			
+			function getRandomNum(max,min){
+				var litle=min;
+				var distance=max-min;
+				var num=Math.round(Math.random()*distance+litle);//随机产生长度为30 起点为2的数字
+				return num;
+			}
+			
+			function checkNum(num,arr){
+				if(arr.length !== 0){
+					for(var i = 0;i<arr.length;i++){
+						//查看现有数组有无当前数字
+						if(num === arr[i]){//如果有则返回false没有则为true
+							return false;
+						}else{
+							return true;
+						}
+					}
+				}else{
+					return true;
+				}
+				
+			}
+		</script>
+	</body>
+</html>
